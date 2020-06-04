@@ -1,4 +1,4 @@
-# brickbreakerios
+# Brick Breaker iOS
 Simple ball game for iOS
 
 I am building this simple game as a way of teaching myself Swift.  I have built a similar game on multiple platforms, so the logic is all well known to me.
