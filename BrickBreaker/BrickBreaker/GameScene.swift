@@ -1,10 +1,16 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene
+class PhysicsCategory
 {
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    static let Box : UInt32 = 0x01 << 1
+    static let Ball : UInt32 = 0x01 << 2
+    static let Border : UInt = 0x01 << 3
+    static let Bonus : UInt32 = 0x01 << 4
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate
+{
     
     override func didMove(to view: SKView)
     {
