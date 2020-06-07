@@ -1,20 +1,38 @@
 import SpriteKit
 import GameplayKit
 
-class PhysicsCategory
+struct PhysicsCategory
 {
     static let Box : UInt32 = 0x01 << 1
     static let Ball : UInt32 = 0x01 << 2
     static let Border : UInt = 0x01 << 3
-    static let Bonus : UInt32 = 0x01 << 4
+    static let Powerup : UInt = 0x01 << 4
+    static let Bonus : UInt32 = 0x01 << 5
+}
+
+enum GameState
+{
+    case StartMenu
+    case GameOver
+    case Playing
+    case Paused
+    case BallStore
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate
 {
+    var gameState = GameState.StartMenu
     
+    // Moving to this view
     override func didMove(to view: SKView)
     {
-        
+        self.view?.scene?.backgroundColor = SKColor.black
+
+        // Make sure we can find the sprite and it is the correct type
+        if let title:SKSpriteNode = self.childNode(withName: "Title") as? SKSpriteNode
+        {
+            
+        }
     }
     
     func touchDown(atPoint pos : CGPoint)
@@ -52,8 +70,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+    // Called before each frame is rendered
     override func update(_ currentTime: TimeInterval)
     {
-        // Called before each frame is rendered
+
     }
 }
