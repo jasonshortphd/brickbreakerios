@@ -21,13 +21,33 @@ enum GameState
 
 class GameScene: SKScene, SKPhysicsContactDelegate
 {
+    
+    var levelNumber = Int()
+    
+    // Information about the balls
+    var numBallsTotal = Int()
+    var ballsReleased = Int()
+    var ballsRemainingLabel = SKLabelNode()
+    var ballLocation = CGPoint()
+    var ballOrigin = CGPoint()
+    var ballStartingLoc = SKShapeNode()
+    var ballSize = CGFloat()
+    var ballColor = SKColor()
+    
+    
     var gameState = GameState.StartMenu
     
     // Moving to this view
     override func didMove(to view: SKView)
     {
+        
         self.view?.scene?.backgroundColor = SKColor.black
-
+        // Call me for physics collisions
+        physicsWorld.contactDelegate = self
+        
+        ballSize = self.frame.width / 40
+        ballColor = SKColor.white
+        
         // Make sure we can find the sprite and it is the correct type
         if let title:SKSpriteNode = self.childNode(withName: "Title") as? SKSpriteNode
         {
