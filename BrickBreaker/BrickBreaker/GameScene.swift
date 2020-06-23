@@ -21,22 +21,21 @@ enum GameState
 
 class GameScene: SKScene, SKPhysicsContactDelegate
 {
-    
     var levelNumber = Int()
     var highscore = Int()
     var savedHighscore : Int? = UserDefaults.standard.object(forKey: "highscore") as! Int?  // Pull from coredata
-
     
     // Information about the balls
     var numBallsTotal = Int()
     var ballsReleased = Int()
-    var ballsRemainingLabel = SKLabelNode()
-    var ballLocation = CGPoint()
-    var ballOrigin = CGPoint()
-    var ballStartingLoc = SKShapeNode()
+    var ballsRemainingLabel = SKLabelNode()     // Countdown on screen as we release balls
+    var ballTargetLocation = CGPoint()          // Target where balls fly towards
+    var ballOriginLocation = CGPoint()          // Balls starting point
+    var ballStartingLocation = SKShapeNode()
     var ballSize = CGFloat()
     var ballColor = SKColor()
-    
+    var backGroundBall = SKShapeNode()          // Ball stays in background at origin location
+
     // Borders
     var borderRight = SKSpriteNode()
     var borderLeft = SKSpriteNode()
@@ -57,11 +56,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     {
         
         self.view?.scene?.backgroundColor = SKColor.black
+        
         // Call me for physics collisions
         physicsWorld.contactDelegate = self
         
-        ballSize = self.frame.width / 40
-        ballColor = SKColor.white
+        ballSize = self.frame.width / 40        // Default - we will make it so you can pick different balls
+        ballColor = SKColor.white               // Color should be part of unlocked balls too
         
         // Make sure we can find the sprite and it is the correct type
         if let title:SKSpriteNode = self.childNode(withName: "Title") as? SKSpriteNode
