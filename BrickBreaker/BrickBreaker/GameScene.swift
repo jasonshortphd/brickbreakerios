@@ -5,8 +5,8 @@ struct PhysicsCategory
 {
     static let Box : UInt32 = 0x01 << 1
     static let Ball : UInt32 = 0x01 << 2
-    static let Border : UInt = 0x01 << 3
-    static let Powerup : UInt = 0x01 << 4
+    static let Border : UInt32 = 0x01 << 3
+    static let Powerup : UInt32 = 0x01 << 4
     static let Bonus : UInt32 = 0x01 << 5
 }
 
@@ -23,6 +23,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 {
     
     var levelNumber = Int()
+    var highscore = Int()
+    var savedHighscore : Int? = UserDefaults.standard.object(forKey: "highscore") as! Int?  // Pull from coredata
+
     
     // Information about the balls
     var numBallsTotal = Int()
@@ -33,6 +36,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var ballStartingLoc = SKShapeNode()
     var ballSize = CGFloat()
     var ballColor = SKColor()
+    
+    // Borders
+    var borderRight = SKSpriteNode()
+    var borderLeft = SKSpriteNode()
+    var borderTop = SKSpriteNode()
+    var borderBottom = SKSpriteNode()
+
+    // Box Starting Positions
+    var BoxStartx = CGFloat()       // First box x
+    var BoxRowStarty = CGFloat()     // All boxes start at the same y offset
+    var BallStarty = CGFloat()   // Balls have to start at the bottom
+
     
     
     var gameState = GameState.StartMenu
