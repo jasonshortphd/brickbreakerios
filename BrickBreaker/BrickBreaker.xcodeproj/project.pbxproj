@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6702E3EC24A1AA4900F37620 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6702E3EB24A1AA4900F37620 /* CoreData.swift */; };
+		6702E3EC24A1AA4900F37620 /* HighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6702E3EB24A1AA4900F37620 /* HighScore.swift */; };
 		6702E3EE24A1AA8D00F37620 /* CreateBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6702E3ED24A1AA8D00F37620 /* CreateBorders.swift */; };
-		6702E3F024A1AD5300F37620 /* CreateBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6702E3EF24A1AD5300F37620 /* CreateBoxes.swift */; };
+		6702E3F024A1AD5300F37620 /* CreateBricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6702E3EF24A1AD5300F37620 /* CreateBricks.swift */; };
+		671B2CA124B9696800EEF583 /* GameStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CA024B9696800EEF583 /* GameStart.swift */; };
+		671B2CA324B9697400EEF583 /* GameEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CA224B9697400EEF583 /* GameEnd.swift */; };
+		671B2CA524B96A4400EEF583 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CA424B96A4400EEF583 /* GameTimer.swift */; };
+		671B2CA724B96C7600EEF583 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CA624B96C7600EEF583 /* GameOver.swift */; };
+		671B2CA924B96D9200EEF583 /* GameBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CA824B96D9200EEF583 /* GameBorders.swift */; };
+		671B2CAB24B96DF300EEF583 /* GameContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAA24B96DF300EEF583 /* GameContact.swift */; };
+		671B2CAD24B96EB700EEF583 /* GameBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAC24B96EB700EEF583 /* GameBall.swift */; };
+		671B2CAF24B96F8600EEF583 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAE24B96F8600EEF583 /* GameMenu.swift */; };
 		67A34DF12492E9F700A0288C /* BallHit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67A34DF02492E9F700A0288C /* BallHit.sks */; };
 		67E3EBBD24898DC300089E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3EBBC24898DC300089E36 /* AppDelegate.swift */; };
 		67E3EBBF24898DC300089E36 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67E3EBBE24898DC300089E36 /* GameScene.sks */; };
@@ -22,9 +30,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6702E3EB24A1AA4900F37620 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		6702E3EB24A1AA4900F37620 /* HighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScore.swift; sourceTree = "<group>"; };
 		6702E3ED24A1AA8D00F37620 /* CreateBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBorders.swift; sourceTree = "<group>"; };
-		6702E3EF24A1AD5300F37620 /* CreateBoxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBoxes.swift; sourceTree = "<group>"; };
+		6702E3EF24A1AD5300F37620 /* CreateBricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBricks.swift; sourceTree = "<group>"; };
+		671B2CA024B9696800EEF583 /* GameStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStart.swift; sourceTree = "<group>"; };
+		671B2CA224B9697400EEF583 /* GameEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEnd.swift; sourceTree = "<group>"; };
+		671B2CA424B96A4400EEF583 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		671B2CA624B96C7600EEF583 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		671B2CA824B96D9200EEF583 /* GameBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBorders.swift; sourceTree = "<group>"; };
+		671B2CAA24B96DF300EEF583 /* GameContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContact.swift; sourceTree = "<group>"; };
+		671B2CAC24B96EB700EEF583 /* GameBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBall.swift; sourceTree = "<group>"; };
+		671B2CAE24B96F8600EEF583 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		67A34DF02492E9F700A0288C /* BallHit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallHit.sks; sourceTree = "<group>"; };
 		67E3EBB924898DC300089E36 /* BrickBreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrickBreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E3EBBC24898DC300089E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,9 +96,17 @@
 				67E3EBCB24898DC500089E36 /* LaunchScreen.storyboard */,
 				67E3EBCE24898DC500089E36 /* Info.plist */,
 				67A34DF02492E9F700A0288C /* BallHit.sks */,
-				6702E3EB24A1AA4900F37620 /* CoreData.swift */,
+				6702E3EB24A1AA4900F37620 /* HighScore.swift */,
 				6702E3ED24A1AA8D00F37620 /* CreateBorders.swift */,
-				6702E3EF24A1AD5300F37620 /* CreateBoxes.swift */,
+				6702E3EF24A1AD5300F37620 /* CreateBricks.swift */,
+				671B2CA024B9696800EEF583 /* GameStart.swift */,
+				671B2CA224B9697400EEF583 /* GameEnd.swift */,
+				671B2CA424B96A4400EEF583 /* GameTimer.swift */,
+				671B2CA624B96C7600EEF583 /* GameOver.swift */,
+				671B2CA824B96D9200EEF583 /* GameBorders.swift */,
+				671B2CAA24B96DF300EEF583 /* GameContact.swift */,
+				671B2CAC24B96EB700EEF583 /* GameBall.swift */,
+				671B2CAE24B96F8600EEF583 /* GameMenu.swift */,
 			);
 			path = BrickBreaker;
 			sourceTree = "<group>";
@@ -114,7 +138,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Jason Short";
 				TargetAttributes = {
 					67E3EBB824898DC300089E36 = {
@@ -161,10 +185,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6702E3EC24A1AA4900F37620 /* CoreData.swift in Sources */,
+				671B2CAF24B96F8600EEF583 /* GameMenu.swift in Sources */,
+				6702E3EC24A1AA4900F37620 /* HighScore.swift in Sources */,
+				671B2CA324B9697400EEF583 /* GameEnd.swift in Sources */,
+				671B2CAB24B96DF300EEF583 /* GameContact.swift in Sources */,
+				671B2CA524B96A4400EEF583 /* GameTimer.swift in Sources */,
+				671B2CA724B96C7600EEF583 /* GameOver.swift in Sources */,
+				671B2CA924B96D9200EEF583 /* GameBorders.swift in Sources */,
+				671B2CAD24B96EB700EEF583 /* GameBall.swift in Sources */,
 				67E3EBC324898DC300089E36 /* GameScene.swift in Sources */,
+				671B2CA124B9696800EEF583 /* GameStart.swift in Sources */,
 				6702E3EE24A1AA8D00F37620 /* CreateBorders.swift in Sources */,
-				6702E3F024A1AD5300F37620 /* CreateBoxes.swift in Sources */,
+				6702E3F024A1AD5300F37620 /* CreateBricks.swift in Sources */,
 				67E3EBC524898DC300089E36 /* GameViewController.swift in Sources */,
 				67E3EBBD24898DC300089E36 /* AppDelegate.swift in Sources */,
 			);
@@ -218,6 +250,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -242,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -278,6 +311,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -296,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

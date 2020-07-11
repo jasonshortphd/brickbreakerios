@@ -3,7 +3,7 @@ import SpriteKit
 
 extension GameScene
 {
-    func createBorders()
+    func createBorder()
     {
         borderRight = SKSpriteNode()
         borderRight.size = CGSize(width: 3, height: self.frame.height)
@@ -15,7 +15,7 @@ extension GameScene
         borderRight.physicsBody?.collisionBitMask = 0
         borderRight.physicsBody?.contactTestBitMask = PhysicsCategory.Ball
         borderRight.physicsBody?.friction = 0.0
-        borderRight.color = UIColor.black
+        borderRight.color = UIColor.white
         borderRight.name = "border"
         
         borderLeft = SKSpriteNode()
@@ -28,7 +28,7 @@ extension GameScene
         borderLeft.physicsBody?.collisionBitMask = 0
         borderLeft.physicsBody?.contactTestBitMask = PhysicsCategory.Ball
         borderLeft.physicsBody?.friction = 0.0
-        borderLeft.color = UIColor.black
+        borderLeft.color = UIColor.white
         borderLeft.name = "borderLeft"
         
         borderTop = SKSpriteNode()
