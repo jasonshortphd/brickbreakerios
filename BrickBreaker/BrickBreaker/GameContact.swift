@@ -124,16 +124,17 @@ extension GameScene
         }
         else if (firstBody.node?.name == "borderLeft" && secondBody.categoryBitMask == PhysicsCategory.Ball)
         {
-            // algorithm to detect if a bullet is flying horizontally -> prevention from a never ending game
+            // Has the ball hit the left side N times in the same region?
             for child in self.children
             {
                 if let ball = child as? GameBall
                 {
-                    // Not EXACT same position, lumping into buckets of ranges in the game
+                    // Using a mod operator to break screen up into regions
                     if ball.previousYPostition <= ball.position.y + self.frame.height / 100 && ball.previousYPostition >= ball.position.y - self.frame.height / 100
                     {
                         ball.samePositionCount += 1
 
+                        // Too many times?  Add a little random shove to the ball
                         if ball.samePositionCount > 3
                         {
                             ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 15...55)))
@@ -147,7 +148,6 @@ extension GameScene
                 ball.previousYPostition = ball.position.y
             }
         }
-        
     }
 }
 

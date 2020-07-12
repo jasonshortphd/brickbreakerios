@@ -7,8 +7,7 @@ extension GameScene
     {
         menuVisible = false
         gameOverVisible = true
-        //pauseButton.isHidden = true
-        
+
         // We could show an ad here... But I sort of hate ads.
         
         darkerBackgroundRect = SKShapeNode(rectOf: self.frame.size)
@@ -37,24 +36,7 @@ extension GameScene
         quitButton.zPosition = 8
         quitButton.name = "quitButton"
         self.addChild(quitButton)
-        
-//        watchVideoButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2.8, height: self.frame.height / 6))
-//        watchVideoButton.position = CGPoint(x: watchVideoButton.frame.width * (7/12), y: 0)
-//        watchVideoButton.strokeColor = colorsSecondary[5]!
-//        watchVideoButton.lineWidth = 10
-//        watchVideoButton.fillColor = colorsSecondary[6]!
-//        watchVideoButton.zPosition = 8
-//        watchVideoButton.name = "watchVideoButton"
-//        self.addChild(watchVideoButton)
-//
-//        continueLabel = SKLabelNode(text: "WHAT'S NEXT?")
-//        continueLabel.position = CGPoint(x: 0, y: self.frame.height / 4)
-//        continueLabel.fontSize = self.frame.width / 10
-//        continueLabel.fontName = "Helvetica Neue Condensed Bold"
-//        continueLabel.zPosition = 7
-//        continueLabel.name = "continueLabel"
-//        self.addChild(continueLabel)
-        
+                
         endGameLabel = SKLabelNode(text: "QUIT")
         endGameLabel.position = CGPoint(x: quitButton.position.x, y: -endGameLabel.frame.height / 2)
         endGameLabel.fontSize = self.frame.width / 12
@@ -63,25 +45,6 @@ extension GameScene
         endGameLabel.zPosition = 9
         endGameLabel.name = "endGameLabel"
         self.addChild(endGameLabel)
-        
-//        oneMoreLabel = SKLabelNode(text: "ONE MORE")
-//        oneMoreLabel.position = CGPoint(x: watchVideoButton.position.x, y: oneMoreLabel.frame.height / 2 )
-//        oneMoreLabel.fontSize = self.frame.width / 17
-//        oneMoreLabel.fontColor = colorsSecondary[15]!
-//        oneMoreLabel.fontName = "Helvetica Neue Condensed Bold"
-//        oneMoreLabel.zPosition = 9
-//        oneMoreLabel.name = "oneMoreLabel"
-//        self.addChild(oneMoreLabel)
-//
-//        chanceLabel = SKLabelNode(text: "CHANCE")
-//        chanceLabel.position = CGPoint(x: watchVideoButton.position.x, y: -2 * chanceLabel.frame.height )
-//        chanceLabel.fontSize = self.frame.width / 17
-//        chanceLabel.fontColor = colorsSecondary[15]!
-//        chanceLabel.fontName = "Helvetica Neue Condensed Bold"
-//        chanceLabel.zPosition = 9
-//        chanceLabel.name = "chanceLabel"
-//        self.addChild(chanceLabel)
-
     }
     
     func deleteGameOverView()

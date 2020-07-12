@@ -20,7 +20,6 @@ extension GameScene
         timeLeftMin = 29
         timeLeftSec = 59
         
-        startGameTimer()
         createInGameMenuTop()
         createGameTimer()
         createBorder()
@@ -36,6 +35,8 @@ extension GameScene
         {
             ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)
         }
+
+        startGameTimer()
         updateGameTimer()
     }
 

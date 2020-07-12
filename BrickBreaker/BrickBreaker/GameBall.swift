@@ -60,7 +60,7 @@ extension GameScene
             let x = ballTargetLocation.x - ballOriginLocation.x
             let y = ballTargetLocation.y - ballOriginLocation.y
             let ratio = x/y
-            let newY = CGFloat(getShootSpeed(a:ballOriginLocation, b: ballTargetLocation)/(sqrt(Double(1 + (ratio * ratio)))))
+            let newY = CGFloat(getReleaseSpeed(a:ballOriginLocation, b: ballTargetLocation)/(sqrt(Double(1 + (ratio * ratio)))))
             let newX = CGFloat(ratio * newY)
             
             // Add some push
@@ -77,27 +77,24 @@ extension GameScene
         }
     }
 
-    func getShootSpeed(a: CGPoint, b: CGPoint) -> Double
+    // How fast to send ball?
+    func getReleaseSpeed(a: CGPoint, b: CGPoint) -> Double
     {
-        // calculating how fast the bullet is going to fly
-        // if you want to change it, i would not recommand you to try to understand my calculations, simply change the return value to e.g 200:)
-        // ...and if you try to understand, don't blame me for my strange thinking
         let xDist = a.x - b.x
         let yDist = a.y - b.y
         let distance = CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
+
+        // Based on how far it was dragged out
         if distance < self.frame.width / 6
         {
-            // if the distance is between 0 and self.frame.width / 6
             return 60
         }
         else if distance < self.frame.width / 4
         {
-            // if the distance is between self.frame.width / 6 and self.frame.width / 4
             return 75
         }
         else if distance < self.frame.width / 2
         {
-            // if the distance is between self.frame.width / 4 and self.frame.width / 2
             return 90
         }
         else

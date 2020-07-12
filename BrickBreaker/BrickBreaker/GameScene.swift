@@ -275,7 +275,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 {
                     ballStartingLocation.removeFromParent()
                     ballSize /= 1.2
-                    // changing the bullet the user gets to play with
+                    
+                    // Rotate through ball colors
+                    // TODO: Replace with color pallete
                     if ballColor == SKColor.white
                     {
                         ballColor = SKColor.green
@@ -287,7 +289,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     else if ballColor == SKColor.red
                     {
                         ballColor = SKColor.blue
-                    }"
+                    }
                     else
                     {
                         ballColor = SKColor.white
@@ -326,10 +328,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 // Prepare to launch balls
                 if location.y < borderBottom.position.y
                 {
-                    // one last check -> the touch has to be below the bullet to give it an impulse
                     if !ballStartingLocation.contains(location)
                     {
-                        
                         ballTargetLocation = location
                         ballsReleased = 0
                         
@@ -338,7 +338,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballStartingLocation.strokeColor = ballColor
                         ballStartingLocation.position = ballStartingLocation.position
                         ballStartingLocation.zPosition = 10
-                        ballStartingLocation.name = "backGroundBullet"
+                        ballStartingLocation.name = "startingBallLocation"
                         // TODO: What if ballStartingLocation isn't valid?
                         // TODO: What if touchIsEnabled was turned off and we can't
                         ballOriginLocation = ballStartingLocation.position
