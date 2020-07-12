@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     // MAIN MENU
     var bouncingBall = SKSpriteNode()       // Demo of the current ball
     var bounceBottom = SKSpriteNode()       // Line to bounce off
-    var triangleShape = SKShapeNode()       // Play button
+    var playButtonShape = SKShapeNode()     // Play button
     var circleShape = SKShapeNode()         // Change ball
     var gameNameLabel = SKLabelNode()
     var upperLine = SKShapeNode()
@@ -166,6 +166,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
     }
     
+    func deletePointer()
+    {
+        for node in self.children
+        {
+            if let nodeShape = node as? SKShapeNode
+            {
+                if nodeShape.name != nil
+                {
+                    if nodeShape.name == "directionPointer"
+                    {
+                        nodeShape.removeFromParent()
+                    }
+                }
+            }
+        }
+    }
+    
     func touchDown(atPoint pos : CGPoint)
     {
 
@@ -183,17 +200,161 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        //for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            
+            if menuVisible
+            {
+                if playBackGround.contains(location)
+                {
+                    playButtonShape.alpha = 0.6
+                }
+                else if ballBackGround.contains(location)
+                {
+                    circleShape.alpha = 0.6
+                }
+            }
+            else if gameOverVisible
+            {
+                if quitButton.contains(location)
+                {
+                    endGameLabel.alpha = 0.6
+                }
+            }
+        }
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        //for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        // where the pointer is created
+        // as the pointer has to be updated constantly it is created in touchesMoved
+        // first -> if there is an old pointer it is deleted
+        deletePointer()
+    
+        for touch in touches
+        {
+            // then we are setting up the new pointer
+            let location = touch.location(in: self)
+            if location.y < borderBottom.position.y{
+            let line_path:CGMutablePath = CGMutablePath()
+            line_path.move(to: ballStartingLocation.position)
+            // we get tthe point where the line has to move to, by taking the opposite of imaginary line between the original ball and the location of the touch
+            // if you want to change the length of the pointer, you would have to change the two '1.5'
+            line_path.addLine(to: CGPoint(x:ballStartingLocation.position.x - 1.7*(location.x - ballStartingLocation.position.x), y: ballStartingLocation.position.y - 1.7*(location.y - ballStartingLocation.position.y)))
+            let shape = SKShapeNode()
+            shape.name = "directionPointer"
+            shape.path = line_path
+            shape.lineWidth = 5.0
+            shape.strokeColor = SKColor.white
+            shape.fillColor = SKColor.blue
+            shape.zPosition = 3
+            self.addChild(shape)
+            }
+        }
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            if menuVisible
+            {
+                if playBackGround.contains(location)
+                {
+                    self.removeAllChildren()
+                    startGame()
+                }
+                else if ballBackGround.contains(location)
+                {
+                    ballStartingLocation.removeFromParent()
+                    ballSize /= 1.2
+                    // changing the bullet the user gets to play with
+                    if ballColor == SKColor.white
+                    {
+                        ballColor = SKColor.green
+                    }
+                    else if ballColor == SKColor.green
+                    {
+                        ballColor = SKColor.red
+                    }
+                    else if ballColor == SKColor.red
+                    {
+                        ballColor = SKColor.blue
+                    }"
+                    else
+                    {
+                        ballColor = SKColor.white
+                        ballSize = self.frame.width / 40
+                    }
+                    
+                    createMainMenuBallDisplay()
+                    circleShape.alpha = 1.0
+                }
+                else
+                {
+                    playBackGround.alpha = 1.0
+                    playButtonShape.alpha = 1.0
+                    ballBackGround.alpha = 1.0
+                    circleShape.alpha = 1.0
+                }
+            }
+            else if gameOverVisible
+            {
+                if quitButton.contains(location)
+                {
+                    self.removeAllChildren()
+                    gameOverVisible = false
+                    MainGameSceneMenu()
+                }
+                else
+                {
+                    endGameLabel.alpha = 1.0
+                    oneMoreLabel.alpha = 1.0
+                    chanceLabel.alpha = 1.0
+                }
+            }
+            else if touchIsEnabled
+            {
+                // TODO: Change so you can drag up or down
+                // Prepare to launch balls
+                if location.y < borderBottom.position.y
+                {
+                    // one last check -> the touch has to be below the bullet to give it an impulse
+                    if !ballStartingLocation.contains(location)
+                    {
+                        
+                        ballTargetLocation = location
+                        ballsReleased = 0
+                        
+                        ballStartingLocation = SKShapeNode(circleOfRadius: ballStartingLocation.frame.width / 2)
+                        ballStartingLocation.fillColor = ballColor
+                        ballStartingLocation.strokeColor = ballColor
+                        ballStartingLocation.position = ballStartingLocation.position
+                        ballStartingLocation.zPosition = 10
+                        ballStartingLocation.name = "backGroundBullet"
+                        // TODO: What if ballStartingLocation isn't valid?
+                        // TODO: What if touchIsEnabled was turned off and we can't
+                        ballOriginLocation = ballStartingLocation.position
+                        
+                        ballStartingLocation.removeFromParent()
+                        self.addChild(ballStartingLocation)
+                        ballsRemainingLabel.removeFromParent()
+                        createNumberBallsLabel()
+                        startLaunchTimer()
+                        touchIsEnabled = false
+                    }
+                }
+            }
+        }
+        deletePointer()
+
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?)

@@ -5,15 +5,16 @@ extension GameScene
 {
     func startGame()
     {
+        //TODO: Replace with game state
         menuVisible = false
         gameOverVisible = false
         gameOver = false
+
+        touchIsEnabled = true
+        isBallTouchingBottom = true
         xBrickStart = -self.frame.width  / 2 + self.frame.width / 14
         numBallsTotal = 0
         levelNumber = 0
-        touchIsEnabled = true
-        isBallTouchingBottom = true
-        //pauseButton.isHidden = false
 
         // Adding the timer like BBTAN had
         timeLeftMin = 29
@@ -21,7 +22,7 @@ extension GameScene
         
         startGameTimer()
         createInGameMenuTop()
-        createInGameMenuBottom()
+        createGameTimer()
         createBorder()
         createBricks()
         showBall()

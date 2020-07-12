@@ -42,21 +42,22 @@ extension GameScene
         ballBackGround.zPosition = 1
         self.addChild(ballBackGround)
         
-        let line_path:CGMutablePath = CGMutablePath()
-        let lineHeight = playBackGround.frame.height / 2
-        line_path.move(to: CGPoint(x: playBackGround.position.x - lineHeight / 2, y: playBackGround.position.y + lineHeight / 2))
-        line_path.addLine(to: CGPoint(x:playBackGround.position.x + lineHeight / 2, y: playBackGround.position.y))
-        line_path.addLine(to: CGPoint(x: playBackGround.position.x - lineHeight / 2, y: playBackGround.position.y - lineHeight / 2))
-        line_path.addLine(to: CGPoint(x: playBackGround.position.x - lineHeight / 2, y: playBackGround.position.y + lineHeight / 2))
-        triangleShape = SKShapeNode()
-        triangleShape.name = "playButton"
-        triangleShape.path = line_path
-        triangleShape.lineWidth = 10
-        triangleShape.strokeColor = SKColor(red: 227/255, green: 160/255, blue: 158/255, alpha: 1.0)
-        triangleShape.zPosition = 2
-        self.addChild(triangleShape)
+        let playButtonPath:CGMutablePath = CGMutablePath()
+        let lineSize = playBackGround.frame.height / 2
+        playButtonPath.move(to: CGPoint(x: playBackGround.position.x - lineSize / 2, y: playBackGround.position.y + lineSize / 2))
+        playButtonPath.addLine(to: CGPoint(x:playBackGround.position.x + lineSize / 2, y: playBackGround.position.y))
+        playButtonPath.addLine(to: CGPoint(x: playBackGround.position.x - lineSize / 2, y: playBackGround.position.y - lineSize / 2))
+        playButtonPath.addLine(to: CGPoint(x: playBackGround.position.x - lineSize / 2, y: playBackGround.position.y + lineSize / 2))
         
-        gameNameLabel = SKLabelNode(text: "Brick Breaker")
+        playButtonShape = SKShapeNode()
+        playButtonShape.name = "playButton"
+        playButtonShape.path = playButtonPath
+        playButtonShape.lineWidth = 10
+        playButtonShape.strokeColor = SKColor(red: 227/255, green: 160/255, blue: 158/255, alpha: 1.0)
+        playButtonShape.zPosition = 2
+        self.addChild(playButtonShape)
+        
+        gameNameLabel = SKLabelNode(text: "Brick Out")
         gameNameLabel.fontSize = self.frame.height / 9
         gameNameLabel.fontName = "Helvetica Neue Condensed Bold"
         gameNameLabel.fontColor = SKColor(red: 221/255, green: 232/255, blue: 130/255, alpha: 1.0)
@@ -77,19 +78,21 @@ extension GameScene
         bottomLine.zPosition = 1
         self.addChild(bottomLine)
         
-        circleShape = SKShapeNode(circleOfRadius: lineHeight / 4)
+        circleShape = SKShapeNode(circleOfRadius: lineSize / 4)
         circleShape.strokeColor = SKColor(red: 227/255, green: 160/255, blue: 158/255, alpha: 1.0)
         circleShape.fillColor = circleShape.strokeColor
         circleShape.position = ballBackGround.position
         circleShape.zPosition = 2
         self.addChild(circleShape)
         
-        createInGameMenuBottom()
-        createBorder()
+        createGameTimer()
+        
         timeLabel.fontSize = self.frame.width / 8
         timeLabel.fontName = "Helvetica Neue Condensed Bold"
-        timeLabel.text = "READY PLAYER 1..."
-        
+        timeLabel.text = "READY PLAYER..."
+
+        createBorder()
+
         createMainMenuBallDisplay()
         
         bounceBottom = SKSpriteNode(color: SKColor.clear, size: CGSize(width: self.frame.width , height: 0.1))
