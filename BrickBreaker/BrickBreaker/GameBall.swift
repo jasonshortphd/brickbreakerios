@@ -36,36 +36,35 @@ extension GameScene
             {
                 ballsRemainingLabel.removeFromParent()
             }
-            // every 0.2 seconds the bulletTimer creates this bullet below
-            let bullet = GameBall(circleOfRadius: ballSize)
-            bullet.fillColor = ballColor
-            bullet.strokeColor = ballColor
-            bullet.position = ballStartingLocation.position
-            bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.frame.height / 2)
-            bullet.physicsBody?.categoryBitMask = PhysicsCategory.Ball
-            bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Brick | PhysicsCategory.Border
-            bullet.physicsBody?.collisionBitMask = PhysicsCategory.Brick | PhysicsCategory.Border 
-            bullet.physicsBody?.affectedByGravity = false
-            bullet.physicsBody?.isDynamic = true
-            bullet.physicsBody?.friction = 0
-            bullet.physicsBody?.restitution = 1.0
-            bullet.physicsBody?.angularDamping = 0.0
-            bullet.physicsBody?.linearDamping = 0.0
-            bullet.name = "bullet"
-            bullet.zPosition = 3
-            bullet.physicsBody?.mass = 0.0564
 
-            self.addChild(bullet)
+            let ball = GameBall(circleOfRadius: ballSize)
+            ball.fillColor = ballColor
+            ball.strokeColor = ballColor
+            ball.position = ballStartingLocation.position
+            ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.height / 2)
+            ball.physicsBody?.categoryBitMask = PhysicsCategory.Ball
+            ball.physicsBody?.contactTestBitMask = PhysicsCategory.Brick | PhysicsCategory.Border
+            ball.physicsBody?.collisionBitMask = PhysicsCategory.Brick | PhysicsCategory.Border
+            ball.physicsBody?.affectedByGravity = false
+            ball.physicsBody?.isDynamic = true
+            ball.physicsBody?.friction = 0
+            ball.physicsBody?.restitution = 1.0
+            ball.physicsBody?.angularDamping = 0.0
+            ball.physicsBody?.linearDamping = 0.0
+            ball.name = "ball"
+            ball.zPosition = 3
+            ball.physicsBody?.mass = 0.0564
 
-            // Where should the ball go?
+            self.addChild(ball)
+
             let x = ballTargetLocation.x - ballOriginLocation.x
             let y = ballTargetLocation.y - ballOriginLocation.y
             let ratio = x/y
             let newY = CGFloat(getShootSpeed(a:ballOriginLocation, b: ballTargetLocation)/(sqrt(Double(1 + (ratio * ratio)))))
             let newX = CGFloat(ratio * newY)
             
-            // applying an impulse of the calculated vector to the bullet
-            bullet.physicsBody?.applyImpulse(CGVector(dx: newX, dy: newY))
+            // Add some push
+            ball.physicsBody?.applyImpulse(CGVector(dx: newX, dy: newY))
             ballsReleased += 1
             
         }

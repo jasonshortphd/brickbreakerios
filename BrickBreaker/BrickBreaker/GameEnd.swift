@@ -9,7 +9,7 @@ extension GameScene
         for node in self.children
         {
             // Do we still have balls being released?  Or any active ones?
-            if node.name == "bullet" || ballsReleased < numBallsTotal
+            if node.name == "ball" || ballsReleased < numBallsTotal
             {
                 roundOver = false
             }

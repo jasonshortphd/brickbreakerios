@@ -18,6 +18,7 @@
 		671B2CAB24B96DF300EEF583 /* GameContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAA24B96DF300EEF583 /* GameContact.swift */; };
 		671B2CAD24B96EB700EEF583 /* GameBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAC24B96EB700EEF583 /* GameBall.swift */; };
 		671B2CAF24B96F8600EEF583 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CAE24B96F8600EEF583 /* GameMenu.swift */; };
+		671B2CB124BA8EC700EEF583 /* GameMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671B2CB024BA8EC700EEF583 /* GameMainMenu.swift */; };
 		67A34DF12492E9F700A0288C /* BallHit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67A34DF02492E9F700A0288C /* BallHit.sks */; };
 		67E3EBBD24898DC300089E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3EBBC24898DC300089E36 /* AppDelegate.swift */; };
 		67E3EBBF24898DC300089E36 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67E3EBBE24898DC300089E36 /* GameScene.sks */; };
@@ -41,6 +42,7 @@
 		671B2CAA24B96DF300EEF583 /* GameContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContact.swift; sourceTree = "<group>"; };
 		671B2CAC24B96EB700EEF583 /* GameBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBall.swift; sourceTree = "<group>"; };
 		671B2CAE24B96F8600EEF583 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
+		671B2CB024BA8EC700EEF583 /* GameMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMainMenu.swift; sourceTree = "<group>"; };
 		67A34DF02492E9F700A0288C /* BallHit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallHit.sks; sourceTree = "<group>"; };
 		67E3EBB924898DC300089E36 /* BrickBreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrickBreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E3EBBC24898DC300089E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,28 +87,29 @@
 		67E3EBBB24898DC300089E36 /* BrickBreaker */ = {
 			isa = PBXGroup;
 			children = (
-				67E3EBD42489B6B300089E36 /* BrickBreaker.entitlements */,
-				67E3EBBC24898DC300089E36 /* AppDelegate.swift */,
-				67E3EBBE24898DC300089E36 /* GameScene.sks */,
 				67E3EBC024898DC300089E36 /* Actions.sks */,
-				67E3EBC224898DC300089E36 /* GameScene.swift */,
-				67E3EBC424898DC300089E36 /* GameViewController.swift */,
-				67E3EBC624898DC300089E36 /* Main.storyboard */,
+				67E3EBBC24898DC300089E36 /* AppDelegate.swift */,
 				67E3EBC924898DC500089E36 /* Assets.xcassets */,
-				67E3EBCB24898DC500089E36 /* LaunchScreen.storyboard */,
-				67E3EBCE24898DC500089E36 /* Info.plist */,
 				67A34DF02492E9F700A0288C /* BallHit.sks */,
-				6702E3EB24A1AA4900F37620 /* HighScore.swift */,
+				67E3EBD42489B6B300089E36 /* BrickBreaker.entitlements */,
 				6702E3ED24A1AA8D00F37620 /* CreateBorders.swift */,
 				6702E3EF24A1AD5300F37620 /* CreateBricks.swift */,
-				671B2CA024B9696800EEF583 /* GameStart.swift */,
-				671B2CA224B9697400EEF583 /* GameEnd.swift */,
-				671B2CA424B96A4400EEF583 /* GameTimer.swift */,
-				671B2CA624B96C7600EEF583 /* GameOver.swift */,
+				671B2CAC24B96EB700EEF583 /* GameBall.swift */,
 				671B2CA824B96D9200EEF583 /* GameBorders.swift */,
 				671B2CAA24B96DF300EEF583 /* GameContact.swift */,
-				671B2CAC24B96EB700EEF583 /* GameBall.swift */,
+				671B2CA224B9697400EEF583 /* GameEnd.swift */,
+				671B2CB024BA8EC700EEF583 /* GameMainMenu.swift */,
 				671B2CAE24B96F8600EEF583 /* GameMenu.swift */,
+				671B2CA624B96C7600EEF583 /* GameOver.swift */,
+				67E3EBBE24898DC300089E36 /* GameScene.sks */,
+				67E3EBC224898DC300089E36 /* GameScene.swift */,
+				671B2CA024B9696800EEF583 /* GameStart.swift */,
+				671B2CA424B96A4400EEF583 /* GameTimer.swift */,
+				67E3EBC424898DC300089E36 /* GameViewController.swift */,
+				6702E3EB24A1AA4900F37620 /* HighScore.swift */,
+				67E3EBCE24898DC500089E36 /* Info.plist */,
+				67E3EBCB24898DC500089E36 /* LaunchScreen.storyboard */,
+				67E3EBC624898DC300089E36 /* Main.storyboard */,
 			);
 			path = BrickBreaker;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671B2CAF24B96F8600EEF583 /* GameMenu.swift in Sources */,
+				671B2CB124BA8EC700EEF583 /* GameMainMenu.swift in Sources */,
 				6702E3EC24A1AA4900F37620 /* HighScore.swift in Sources */,
 				671B2CA324B9697400EEF583 /* GameEnd.swift in Sources */,
 				671B2CAB24B96DF300EEF583 /* GameContact.swift in Sources */,

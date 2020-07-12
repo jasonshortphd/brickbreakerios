@@ -84,10 +84,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var chanceLabel = SKLabelNode()
 
     var gameState = GameState.StartMenu
+
+    // MAIN MENU
+    var bouncingBall = SKSpriteNode()       // Demo of the current ball
+    var bounceBottom = SKSpriteNode()       // Line to bounce off
+    var triangleShape = SKShapeNode()       // Play button
+    var circleShape = SKShapeNode()         // Change ball
+    var gameNameLabel = SKLabelNode()
+    var upperLine = SKShapeNode()
+    var bottomLine = SKShapeNode()
+    var playBackGround = SKShapeNode()
+    var ballBackGround = SKShapeNode()
+
     
     // Moving to this view - called right before we get started
     override func didMove(to view: SKView)
     {
+        loadHighScore()
+
         self.view?.scene?.backgroundColor = SKColor.black
         
         // Call me for physics collisions
@@ -147,6 +161,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
         //TODO: Add more color themes https://i.pinimg.com/originals/3e/38/7f/3e387fae0f07d2d28fe6ea6acfb1a69d.png
 
+        
+        MainGameSceneMenu()
         
     }
     
