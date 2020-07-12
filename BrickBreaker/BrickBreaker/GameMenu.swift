@@ -45,6 +45,8 @@ extension GameScene
     // How many left?
     func createNumberBallsLabel()
     {
+        ballsRemainingLabel.removeFromParent()
+
         ballsRemainingLabel = SKLabelNode(text: "\(numBallsTotal)")
         ballsRemainingLabel.fontSize = self.frame.width / 20
         ballsRemainingLabel.fontName = "Verdana"

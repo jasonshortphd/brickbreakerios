@@ -345,9 +345,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         
                         ballStartingLocation.removeFromParent()
                         self.addChild(ballStartingLocation)
-                        ballsRemainingLabel.removeFromParent()
+                        
+                        // Add a label to show the user how many more are remaining
                         createNumberBallsLabel()
+                        // Start the balls launching
                         startLaunchTimer()
+                        
                         touchIsEnabled = false
                     }
                 }
