@@ -19,7 +19,7 @@ extension GameScene
         {
             createBricks()
             createNumberBallsLabel()
-            // changing its position because when the round hasn't started yet the position has to be based on the original ball and not on the origin
+
             if ballStartingLocation.position.x >= 0
             {
                 ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)

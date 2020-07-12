@@ -36,9 +36,9 @@ extension GameScene
         {
             secondBody.node?.physicsBody?.restitution = 1.0
             secondBody.isDynamic = false
+            // First ball to hit bottom stays for next round
             if isBallTouchingBottom
             {
-                // we have to check wheter it is the first ball because it stays on the place where it collided with the border
                 ballStartingLocation.removeFromParent()
                 ballStartingLocation.position = (secondBody.node?.position)!
                 ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height / 2 + 5

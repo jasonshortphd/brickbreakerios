@@ -6,7 +6,7 @@ extension GameScene
     func createMainMenuBallDisplay()
     {
         showBall()
-        ballStartingLocation.position = CGPoint(x: playBackGround.position.x + playBackGround.frame.width / 2.3, y: playBackGround.position.x + playBackGround.frame.height)
+        ballStartingLocation.position = CGPoint(x: ballBackGround.position.x, y: ballBackGround.position.x + ballBackGround.frame.height * 2)
         ballStartingLocation.physicsBody = SKPhysicsBody(circleOfRadius: ballStartingLocation.frame.width / 2)
         ballStartingLocation.physicsBody?.affectedByGravity = true
         ballStartingLocation.physicsBody?.categoryBitMask = PhysicsCategory.Ball
@@ -24,7 +24,6 @@ extension GameScene
         //TODO: Replace with game state
         menuVisible = true
         gameOverVisible = false
-        //pauseButton.isHidden = true
         
         playBackGround = SKShapeNode(rectOf: CGSize(width: self.frame.width / 3, height: self.frame.height / 10))
         playBackGround.position = CGPoint(x: self.frame.width / 5, y: -1.5 * playBackGround.frame.height)
