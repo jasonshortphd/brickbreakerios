@@ -10,7 +10,19 @@ extension GameScene
             node.hitpoints -= 1
             if node.hitpoints < 1
             {
-                //TODO: Build up a death animation for the brick
+                // We have an emitter for explosions
+                let explosion = SKEmitterNode(fileNamed: "BallHit")!
+                explosion.position = node.position
+                addChild(explosion)
+
+                // Build up the explosion
+                let wait = SKAction.wait(forDuration: 0.5)
+                let removeMe = SKAction.removeFromParent()
+                let explode = SKAction.sequence([wait, removeMe])
+                
+                // Run explosion!
+                explosion.run(explode)
+
                 let DeathAnim = SKAction.run {
                     node.removeAllChildren()
                     node.removeFromParent()
