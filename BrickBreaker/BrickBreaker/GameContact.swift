@@ -11,7 +11,7 @@ extension GameScene
             if node.hitpoints < 1
             {
                 // We have an emitter for explosions
-                let explosion = SKEmitterNode(fileNamed: "BallHit")!
+                let explosion = SKEmitterNode(fileNamed: "Explosion2")!
                 explosion.position = node.position
                 addChild(explosion)
 
