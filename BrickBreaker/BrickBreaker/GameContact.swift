@@ -42,8 +42,6 @@ extension GameScene
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
-        // with all these disgusting if statements we have to check which nodes collided
-        // to check that, you can either use the categoryBitMask (PhysicsCategory) or their name
         if (firstBody.node?.name == "borderBottom" && secondBody.categoryBitMask == PhysicsCategory.Ball)
         {
             secondBody.node?.physicsBody?.restitution = 1.0

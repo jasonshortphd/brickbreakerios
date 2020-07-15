@@ -10,10 +10,9 @@ class GameViewController: UIViewController
         
         if let view = self.view as! SKView?
         {
-            // Load the SKScene from 'GameScene.sks'
             if let scene = GameScene(fileNamed: "GameScene")
             {
-                // TODO:  Should we do this here?
+                // Fits better on iPad and Mac this way
                 scene.scaleMode = .aspectFit
 
                 view.presentScene(scene)
@@ -23,23 +22,6 @@ class GameViewController: UIViewController
                 view.showsFPS = true
                 view.showsNodeCount = true
             #endif
-        }
-    }
-
-    override var shouldAutorotate: Bool
-    {
-        return false
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask
-    {
-        if UIDevice.current.userInterfaceIdiom == .phone
-        {
-            return .portrait
-        }
-        else
-        {
-            return .portrait
         }
     }
 
