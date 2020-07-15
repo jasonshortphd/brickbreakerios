@@ -27,15 +27,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     // Information about the balls
     var numBallsTotal = Int()
+    var ballSize = CGFloat()
+    var ballColor = SKColor()
     var ballsReleased = Int()
     var ballTimer = Timer()                     // How fast are balls launched?
     var ballsRemainingLabel = SKLabelNode()     // Countdown on screen as we release balls
-    var ballTargetLocation = CGPoint()          // Target where balls fly towards
+
     var ballOriginLocation = CGPoint()          // Balls starting point
+    var ballLaunchPosition = SKShapeNode()      // Ball stays in background at origin location
     var ballStartingLocation = SKShapeNode()
-    var ballSize = CGFloat()
-    var ballColor = SKColor()
-    var backGroundBall = SKShapeNode()          // Ball stays in background at origin location
+    var ballTargetLocation = CGPoint()          // Target where balls fly towards
 
     // Borders
     var borderRight = SKSpriteNode()
@@ -182,22 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
             }
         }
     }
-    
-    func touchDown(atPoint pos : CGPoint)
-    {
-
-    }
-    
-    func touchMoved(toPoint pos : CGPoint)
-    {
-
-    }
-    
-    func touchUp(atPoint pos : CGPoint)
-    {
-
-    }
-    
+        
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         //for t in touches { self.touchDown(atPoint: t.location(in: self)) }
@@ -259,11 +245,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 
     }
     
+    
+    // Depending on the game state, we have some work to do
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for touch in touches
         {
             let location = touch.location(in: self)
+            //TODO: Change to game state
             if menuVisible
             {
                 if playBackGround.contains(location)
@@ -322,7 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     chanceLabel.alpha = 1.0
                 }
             }
-            else if touchIsEnabled
+            else if touchIsEnabled // GameState = Playing
             {
                 // TODO: Change so you can drag up or down
                 // Prepare to launch balls
@@ -330,21 +319,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 {
                     if !ballStartingLocation.contains(location)
                     {
-                        ballTargetLocation = location
                         ballsReleased = 0
+                        ballsRemainingLabel.removeFromParent()
+
+                        ballTargetLocation = location
                         
-                        ballStartingLocation = SKShapeNode(circleOfRadius: ballStartingLocation.frame.width / 2)
-                        ballStartingLocation.fillColor = ballColor
-                        ballStartingLocation.strokeColor = ballColor
-                        ballStartingLocation.position = ballStartingLocation.position
-                        ballStartingLocation.zPosition = 10
-                        ballStartingLocation.name = "startingBallLocation"
-                        // TODO: What if ballStartingLocation isn't valid?
-                        // TODO: What if touchIsEnabled was turned off and we can't
+                        ballLaunchPosition = SKShapeNode(circleOfRadius: ballStartingLocation.frame.width / 2)
+                        ballLaunchPosition.fillColor = ballColor
+                        ballLaunchPosition.strokeColor = ballColor
+                        ballLaunchPosition.zPosition = 10
+                        ballLaunchPosition.name = "startingBallLocation"
+                        // TODO: What if location isn't valid?
                         ballOriginLocation = ballStartingLocation.position
                         
                         ballStartingLocation.removeFromParent()
-                        self.addChild(ballStartingLocation)
+                        self.addChild(ballLaunchPosition)
                         
                         // Add a label to show the user how many more are remaining
                         createNumberBallsLabel()
@@ -359,12 +348,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         deletePointer()
 
     }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
+        
     // Called before each frame is rendered
     override func update(_ currentTime: TimeInterval)
     {
