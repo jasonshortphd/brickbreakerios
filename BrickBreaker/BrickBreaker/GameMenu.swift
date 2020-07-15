@@ -13,15 +13,6 @@ extension GameScene
         menuRect.name = "menuRect"
         self.addChild(menuRect)
 
-        highestLabel = SKLabelNode(text: "HIGH")
-        highestLabel.fontSize = self.frame.width / 20
-        highestLabel.fontName = "Verdana"
-        highestLabel.fontColor = SKColor.white
-        highestLabel.position = CGPoint(x: self.frame.width / 2 - 1.5 * highscoreLabel.frame.height, y: yBrickRowStart + 1.75 * (highscoreLabel.frame.height))
-        highestLabel.zPosition = 5
-        highestLabel.name = "highestLabel"
-        self.addChild(highestLabel)
-
         scoreLabel = SKLabelNode(text: "1")
         scoreLabel.fontSize = self.frame.width / 7
         scoreLabel.fontName = "Verdana"
@@ -39,6 +30,16 @@ extension GameScene
         highscoreLabel.zPosition = 5
         highscoreLabel.name = "highscoreLabel"
         self.addChild(highscoreLabel)
+
+        highestLabel = SKLabelNode(text: "HIGH")
+        highestLabel.fontSize = self.frame.width / 22
+        highestLabel.fontName = "Verdana"
+        highestLabel.fontColor = SKColor.white
+        highestLabel.position = CGPoint(x: highscoreLabel.position.x, y: yBrickRowStart + 1.75 * (highscoreLabel.frame.height))
+        highestLabel.zPosition = 5
+        highestLabel.name = "highestLabel"
+        self.addChild(highestLabel)
+
         
     }
     

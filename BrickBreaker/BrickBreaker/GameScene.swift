@@ -35,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 
     var ballOriginLocation = CGPoint()          // Balls starting point
     var ballLaunchPosition = SKShapeNode()      // Ball stays in background at origin location
-    var ballStartingLocation = SKShapeNode()
+    var ballStartingLocation = SKShapeNode()    // Where did the balls start (show when balls not launching)
     var ballTargetLocation = CGPoint()          // Target where balls fly towards
 
     // Borders
@@ -263,6 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 else if ballBackGround.contains(location)
                 {
                     ballStartingLocation.removeFromParent()
+                    // Ball gets bigger with each color
                     ballSize /= 1.2
                     
                     // Rotate through ball colors
@@ -282,6 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     else
                     {
                         ballColor = SKColor.white
+                        // Reset ball size
                         ballSize = self.frame.width / 40
                     }
                     
@@ -321,6 +323,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     {
                         ballsReleased = 0
                         ballsRemainingLabel.removeFromParent()
+                        ballStartingLocation.removeFromParent()
 
                         ballTargetLocation = location
                         
@@ -332,7 +335,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         // TODO: What if location isn't valid?
                         ballOriginLocation = ballStartingLocation.position
                         
-                        ballStartingLocation.removeFromParent()
                         self.addChild(ballLaunchPosition)
                         
                         // Add a label to show the user how many more are remaining

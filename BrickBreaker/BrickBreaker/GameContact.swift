@@ -46,7 +46,7 @@ extension GameScene
         {
             secondBody.node?.physicsBody?.restitution = 1.0
             secondBody.isDynamic = false
-            // First ball to hit bottom stays for next round
+            // First ball to hit bottom stays until next round
             if isBallTouchingBottom
             {
                 ballStartingLocation.removeFromParent()
