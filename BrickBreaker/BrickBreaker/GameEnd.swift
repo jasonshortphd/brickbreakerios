@@ -5,39 +5,42 @@ extension GameScene
 {
     func checkIfRoundIsOver()
     {
-        roundOver = true
-        for node in self.children
+        if !gameOver
         {
-            // Do we still have balls being released?  Or any active ones?
-            if node.name == "ball" || ballsReleased < numBallsTotal
+            roundOver = true
+            for node in self.children
             {
-                //TODO:  What if it has been a LONG time?  Ball could be stuck.
-                roundOver = false
-            }
-        }
-        
-        if roundOver
-        {
-            createBricks()
-            createNumberBallsLabel()
-
-            if ballStartingLocation.position.x >= 0
-            {
-                ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
-            }else{
-                ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
+                // Do we still have balls being released?  Or any active ones?
+                if node.name == "ball" || ballsReleased < numBallsTotal
+                {
+                    //TODO:  What if it has been a LONG time?  Ball could be stuck.
+                    roundOver = false
+                }
             }
             
-            // looking for new highscore, if new highscore -> saving it in core data
-            if levelNumber > highscore
+            if roundOver
             {
-                highscore = levelNumber
-                highscoreLabel.text = "\(highscore)"
-                saveHighScore()
+                createBricks()
+                createNumberBallsLabel()
+
+                if ballStartingLocation.position.x >= 0
+                {
+                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
+                }else{
+                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
+                }
+                
+                // looking for new highscore, if new highscore -> saving it in core data
+                if levelNumber > highscore
+                {
+                    highscore = levelNumber
+                    highscoreLabel.text = "\(highscore)"
+                    saveHighScore()
+                }
+                scoreLabel.text = "\(levelNumber)"
+                touchIsEnabled = true
+                hasFirstBallReturned = true
             }
-            scoreLabel.text = "\(levelNumber)"
-            touchIsEnabled = true
-            isBallTouchingBottom = true
         }
     }
     

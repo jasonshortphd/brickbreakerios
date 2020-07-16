@@ -96,15 +96,15 @@ extension GameScene
                 let moveDownCheck = SKAction.sequence([moveDown, checkIfGameOver])
                 box.run(moveDownCheck)
             }
-            if let label = node as? SKLabelNode
-            {
-                // moving down only the labels of a box
-                if let _ = Int(label.name!)
-                {
-                    let moveDown = SKAction.moveTo(y: node.position.y - self.frame.width / 7, duration: 0.8)
-                    label.run(moveDown)
-                }
-            }
+//            if let label = node as? SKLabelNode
+//            {
+//                // moving down only the labels of a box
+//                if let _ = Int(label.name!)
+//                {
+//                    let moveDown = SKAction.moveTo(y: node.position.y - self.frame.width / 7, duration: 0.8)
+//                    label.run(moveDown)
+//                }
+//            }
         }
     }
 

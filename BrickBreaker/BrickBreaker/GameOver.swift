@@ -78,8 +78,6 @@ extension GameScene
         menuRect.removeFromParent()
         quitButton.removeFromParent()
         endGameLabel.removeFromParent()
-        oneMoreLabel.removeFromParent()
-        chanceLabel.removeFromParent()
     }
 }
 

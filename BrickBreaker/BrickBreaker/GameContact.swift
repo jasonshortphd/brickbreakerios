@@ -39,18 +39,15 @@ extension GameScene
     func BallHitBottom( ball:SKPhysicsBody )
     {
         // First ball to hit bottom stays until next round
-        if isBallTouchingBottom
+        if hasFirstBallReturned
         {
-            //ballStartingLocation.removeFromParent()
             ballStartingLocation.position = (ball.node?.position)!
             // Make sure the Y lines up with the border (someties due to velocity it didn't quite line up
             ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height / 2 + 5
-            
-            //self.addChild(ballStartingLocation)
-            
+
+            // Remove the ball
             ball.node?.removeFromParent()
-            isBallTouchingBottom = false
-            checkIfRoundIsOver()
+            hasFirstBallReturned = false
         }
         else
         {
@@ -66,8 +63,6 @@ extension GameScene
             let check = SKAction.run(checkIfRoundIsOver)
             let moveAndRemove = SKAction.sequence([moveToCenter, remove, check])
             ball.node?.run(moveAndRemove)
-            // Is this the last moving ball?
-            checkIfRoundIsOver()
         }
     }
     
@@ -125,6 +120,10 @@ extension GameScene
         {
             isBallStuckSideways(ballHit: secondBody)
         }
+        
+        // See if all moving balls have stopped
+        checkIfRoundIsOver()
+
     }
 }
 

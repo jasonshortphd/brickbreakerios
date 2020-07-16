@@ -73,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var gameOver = Bool()
     var touchIsEnabled = Bool()         // Touch off while balls being released
     var startedBallTouch = Bool()
-    var isBallTouchingBottom = Bool()   // Where will the next round start from?
+    var hasFirstBallReturned = Bool()   // has the first ball returned?
     public var menuVisible = Bool()
     var gameOverVisible = Bool()
     
@@ -102,6 +102,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     // Moving to this view - called right before we get started
     override func didMove(to view: SKView)
     {
+        gameOver = true
+        gameState = .GameOver
         loadHighScore()
 
         self.view?.scene?.backgroundColor = SKColor.black
@@ -118,13 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         yBrickStart = self.frame.height / 2 - self.frame.height / 5 + self.frame.width / 14
         
         ballZoneHeight = self.frame.height / 100
-
-        // Make sure we can find the sprite and it is the correct type
-//        if let title:SKSpriteNode = self.childNode(withName: "Title") as? SKSpriteNode
-//        {
-//
-//        }
-        
+       
         // Range of colors
         colorsPrimary = [
             1 : UIColor(red: 0/255, green: 104/255, blue: 132/255, alpha: 1.0),

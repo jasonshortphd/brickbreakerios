@@ -11,7 +11,7 @@ extension GameScene
         gameOver = false
 
         touchIsEnabled = true
-        isBallTouchingBottom = true
+        hasFirstBallReturned = true
         xBrickStart = -self.frame.width  / 2 + self.frame.width / 14
         numBallsTotal = 0
         levelNumber = 0
