@@ -324,6 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballsReleased = 0
                         ballsRemainingLabel.removeFromParent()
                         ballStartingLocation.removeFromParent()
+                        ballLaunchPosition.removeFromParent()
 
                         ballTargetLocation = location
                         
@@ -332,6 +333,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballLaunchPosition.strokeColor = ballColor
                         ballLaunchPosition.zPosition = 10
                         ballLaunchPosition.name = "startingBallLocation"
+                        ballLaunchPosition.position = ballStartingLocation.position
                         // TODO: What if location isn't valid?
                         ballOriginLocation = ballStartingLocation.position
                         

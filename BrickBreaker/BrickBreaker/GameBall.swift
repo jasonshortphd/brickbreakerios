@@ -72,6 +72,7 @@ extension GameScene
         {
             // No more balls
             ballTimer.invalidate()
+            ballLaunchPosition.removeFromParent()
             ballStartingLocation.removeFromParent()
             ballsRemainingLabel.removeFromParent()
         }
