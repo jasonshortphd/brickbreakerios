@@ -65,7 +65,7 @@ extension GameScene
                 box.hitpointsLabel = SKLabelNode(text: "\(levelNumber)")
                 box.hitpointsLabel.color = UIColor.red
                 box.hitpointsLabel.fontSize = 50
-                box.hitpointsLabel.fontName = "Kailasa"
+                box.hitpointsLabel.fontName = "Damascus"
                 box.hitpointsLabel.position = CGPoint(x: 0, y: -box.hitpointsLabel.frame.height / 2)
                 box.hitpointsLabel.zPosition = 5
 

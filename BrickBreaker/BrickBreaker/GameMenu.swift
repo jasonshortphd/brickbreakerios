@@ -15,7 +15,7 @@ extension GameScene
 
         scoreLabel = SKLabelNode(text: "1")
         scoreLabel.fontSize = self.frame.width / 7
-        scoreLabel.fontName = "Verdana"
+        scoreLabel.fontName = "Damascus"
         scoreLabel.fontColor = SKColor.white
         scoreLabel.position = CGPoint(x: 0, y: yBrickRowStart + 0.35 * (scoreLabel.frame.height))
         scoreLabel.zPosition = 5
@@ -24,7 +24,7 @@ extension GameScene
         
         highscoreLabel = SKLabelNode(text: "\(highscore)")
         highscoreLabel.fontSize = self.frame.width / 12
-        highscoreLabel.fontName = "Verdana"
+        highscoreLabel.fontName = "Damascus"
         highscoreLabel.fontColor = SKColor.white
         highscoreLabel.position = CGPoint(x: self.frame.width / 2 - 1.5 * highscoreLabel.frame.height, y: yBrickRowStart + 0.65 * (highscoreLabel.frame.height))
         highscoreLabel.zPosition = 5
@@ -33,7 +33,7 @@ extension GameScene
 
         highestLabel = SKLabelNode(text: "HIGH")
         highestLabel.fontSize = self.frame.width / 22
-        highestLabel.fontName = "Verdana"
+        highestLabel.fontName = "Damascus"
         highestLabel.fontColor = SKColor.white
         highestLabel.position = CGPoint(x: highscoreLabel.position.x, y: yBrickRowStart + 1.75 * (highscoreLabel.frame.height))
         highestLabel.zPosition = 5
@@ -50,7 +50,7 @@ extension GameScene
 
         ballsRemainingLabel = SKLabelNode(text: "\(numBallsTotal)")
         ballsRemainingLabel.fontSize = self.frame.width / 20
-        ballsRemainingLabel.fontName = "Verdana"
+        ballsRemainingLabel.fontName = "Damascus"
         ballsRemainingLabel.fontColor = SKColor.white
 
         if ballOriginLocation.x >= 0
@@ -77,7 +77,7 @@ extension GameScene
     
         timeLabel = SKLabelNode(text: "\(timeLeftMin):\(timeLeftSec)")
         timeLabel.fontSize = self.frame.width / 7
-        timeLabel.fontName = "Verdana"
+        timeLabel.fontName = "Damascus"
         timeLabel.position = CGPoint(x: 0, y: -self.frame.height / 2 + timeLabel.frame.height / 3.9)
         timeLabel.zPosition = 3
         timeLabel.name = "timePlayingLabel"

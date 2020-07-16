@@ -41,7 +41,7 @@ extension GameScene
         endGameLabel.position = CGPoint(x: quitButton.position.x, y: -endGameLabel.frame.height / 2)
         endGameLabel.fontSize = self.frame.width / 12
         endGameLabel.fontColor = SKColor(red: 144/255, green: 103/255, blue: 149/255, alpha: 1.0)
-        endGameLabel.fontName = "Helvetica Neue Condensed Bold"
+        endGameLabel.fontName = "Damascus"
         endGameLabel.zPosition = 9
         endGameLabel.name = "endGameLabel"
         self.addChild(endGameLabel)

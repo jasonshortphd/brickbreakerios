@@ -58,7 +58,7 @@ extension GameScene
         
         gameNameLabel = SKLabelNode(text: "Brick Out")
         gameNameLabel.fontSize = self.frame.height / 9
-        gameNameLabel.fontName = "Helvetica Neue Condensed Bold"
+        gameNameLabel.fontName = "Damascus"
         gameNameLabel.fontColor = SKColor(red: 221/255, green: 232/255, blue: 130/255, alpha: 1.0)
         gameNameLabel.zPosition = 1
         self.addChild(gameNameLabel)
@@ -87,7 +87,7 @@ extension GameScene
         createGameTimer()
         
         timeLabel.fontSize = self.frame.width / 8
-        timeLabel.fontName = "Helvetica Neue Condensed Bold"
+        timeLabel.fontName = "Damascus"
         timeLabel.text = "READY PLAYER..."
 
         createBorder()
