@@ -45,9 +45,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var borderBottom = SKSpriteNode()
 
     // Box Starting Positions
-    var xBrickStart = CGFloat()       // First box x
-    var yBrickRowStart = CGFloat()     // All boxes start at the same y offset
-    var yBrickStart = CGFloat()   // Balls have to start at the bottom
+    var xBrickStart = CGFloat()     // First box x
+    var yBrickRowStart = CGFloat()  // All boxes start at the same y offset
+    var yBrickStart = CGFloat()     // Balls have to start at the bottom
+    var ballZoneHeight = CGFloat()  // The zone height for detecting balls stuck
 
     var colorsSecondary = [Int : SKColor]()
     var colorsPrimary = [Int :SKColor]()
@@ -115,6 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         xBrickStart = -self.frame.width  / 2 + self.frame.width / 14
         yBrickRowStart = self.frame.height / 2 - self.frame.height / 5 +  self.frame.width / 7
         yBrickStart = self.frame.height / 2 - self.frame.height / 5 + self.frame.width / 14
+        
+        ballZoneHeight = self.frame.height / 100
 
         // Make sure we can find the sprite and it is the correct type
 //        if let title:SKSpriteNode = self.childNode(withName: "Title") as? SKSpriteNode
@@ -335,7 +338,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballLaunchPosition.name = "startingBallLocation"
                         ballLaunchPosition.position = ballStartingLocation.position
                         // TODO: What if location isn't valid?
-                        ballOriginLocation = ballStartingLocation.position
                         
                         self.addChild(ballLaunchPosition)
                         

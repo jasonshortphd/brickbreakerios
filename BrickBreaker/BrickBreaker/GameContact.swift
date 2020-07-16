@@ -36,6 +36,65 @@ extension GameScene
         }
     }
     
+    func BallHitBottom( ball:SKPhysicsBody )
+    {
+        // First ball to hit bottom stays until next round
+        if isBallTouchingBottom
+        {
+            //ballStartingLocation.removeFromParent()
+            ballStartingLocation.position = (ball.node?.position)!
+            // Make sure the Y lines up with the border (someties due to velocity it didn't quite line up
+            ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height / 2 + 5
+            
+            //self.addChild(ballStartingLocation)
+            
+            ball.node?.removeFromParent()
+            isBallTouchingBottom = false
+            checkIfRoundIsOver()
+        }
+        else
+        {
+            // Freeze movement
+            ball.node?.physicsBody?.restitution = 1.0
+            ball.isDynamic = false
+
+            // if it is not the first ball, we are animate it so that it goes to the first ball
+            let moveBall = SKAction.moveTo(y: borderBottom.position.y + (ball.node?.frame.height)! / 2, duration: 0.2)
+            ball.node?.run(moveBall)
+            let moveToCenter = SKAction.moveTo(x: ballStartingLocation.position.x, duration: 0.4)
+            let remove = SKAction.removeFromParent()
+            let check = SKAction.run(checkIfRoundIsOver)
+            let moveAndRemove = SKAction.sequence([moveToCenter, remove, check])
+            ball.node?.run(moveAndRemove)
+            // Is this the last moving ball?
+            checkIfRoundIsOver()
+        }
+    }
+    
+    func isBallStuckSideways( ballHit:SKPhysicsBody )
+    {
+        // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
+        let ball = ballHit.node as! GameBall
+        // Not EXACT same position, lumping into buckets of ranges in the game
+        if ball.previousYPostition <= ball.position.y + ballZoneHeight && ball.previousYPostition >= ball.position.y - ballZoneHeight
+        {
+            ball.samePositionCount += 1
+
+            if ball.samePositionCount > 3
+            {
+                // Shove the ball out of alignment a random amount
+                ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 15...55)))
+                ball.samePositionCount = 0
+            }
+        }
+        else
+        {
+            // Reset if we are outside the zone
+            ball.samePositionCount = 0
+            ball.previousYPostition = ball.position.y
+        }
+    }
+    
     // A collision has happened!
     func didBegin(_ contact: SKPhysicsContact)
     {
@@ -44,58 +103,11 @@ extension GameScene
         
         if (firstBody.node?.name == "borderBottom" && secondBody.categoryBitMask == PhysicsCategory.Ball)
         {
-            secondBody.node?.physicsBody?.restitution = 1.0
-            secondBody.isDynamic = false
-            // First ball to hit bottom stays until next round
-            if isBallTouchingBottom
-            {
-                ballStartingLocation.removeFromParent()
-                ballStartingLocation.position = (secondBody.node?.position)!
-                ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height / 2 + 5
-                self.addChild(ballStartingLocation)
-                secondBody.node?.removeFromParent()
-                isBallTouchingBottom = false
-                checkIfRoundIsOver()
-            }
-            else
-            {
-                // if it is not the first ball, we are animate it so that it goes to the first ball
-                let moveBall = SKAction.moveTo(y: borderBottom.position.y + (secondBody.node?.frame.height)! / 2, duration: 0.2)
-                secondBody.node?.run(moveBall)
-                let moveToCenter = SKAction.moveTo(x: ballStartingLocation.position.x, duration: 0.4)
-                let remove = SKAction.removeFromParent()
-                let check = SKAction.run(checkIfRoundIsOver)
-                let moveAndRemove = SKAction.sequence([moveToCenter, remove, check])
-                secondBody.node?.run(moveAndRemove)
-                checkIfRoundIsOver()
-            }
+            BallHitBottom(ball: secondBody)
         }
         else if (firstBody.categoryBitMask == PhysicsCategory.Ball && secondBody.node?.name == "borderBottom")
         {
-            // same if statement as obove but vice-versa
-            if isBallTouchingBottom
-            {
-                ballStartingLocation.removeFromParent()
-                ballStartingLocation.position = (firstBody.node?.position)!
-                ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height + 5
-                self.addChild(ballStartingLocation)
-                secondBody.node?.removeFromParent()
-                isBallTouchingBottom = true
-                checkIfRoundIsOver()
-            }
-            else
-            {
-                firstBody.isDynamic = false
-                firstBody.node?.physicsBody?.restitution = 1.0
-                let moveDown = SKAction.moveTo(y: borderBottom.position.y + (secondBody.node?.frame.height)! / 2, duration: 0.2)
-                firstBody.node?.run(moveDown)
-                let moveToCenter = SKAction.moveTo(x: ballStartingLocation.position.x, duration: 0.4)
-                let remove = SKAction.removeFromParent()
-                let check = SKAction.run(checkIfRoundIsOver)
-                let moveAndRemove = SKAction.sequence([moveToCenter, remove, check])
-                firstBody.node?.run(moveAndRemove)
-                checkIfRoundIsOver()
-            }
+            BallHitBottom(ball: firstBody)
         }
         else if (firstBody.categoryBitMask == PhysicsCategory.Ball && secondBody.categoryBitMask == PhysicsCategory.Brick)
         {
@@ -107,56 +119,11 @@ extension GameScene
         }
         else if (firstBody.categoryBitMask == PhysicsCategory.Ball && secondBody.node?.name == "borderLeft")
         {
-            // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
-            for child in self.children
-            {
-                if let ball = child as? GameBall
-                {
-                    // Not EXACT same position, lumping into buckets of ranges in the game
-                    if ball.previousYPostition <= ball.position.y + self.frame.height / 100 && ball.previousYPostition >= ball.position.y - self.frame.height / 100
-                    {
-                        ball.samePositionCount += 1
-
-                        if ball.samePositionCount > 3
-                        {
-                            // Shove the ball out of alignment a random amount
-                            ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 15...55)))
-                            ball.samePositionCount = 0
-                        }
-                    }
-                }
-            }
-            if let ball = firstBody.node as? GameBall
-            {
-                ball.previousYPostition = ball.position.y
-            }
-
+            isBallStuckSideways(ballHit: firstBody)
         }
         else if (firstBody.node?.name == "borderLeft" && secondBody.categoryBitMask == PhysicsCategory.Ball)
         {
-            // Has the ball hit the left side N times in the same region?
-            for child in self.children
-            {
-                if let ball = child as? GameBall
-                {
-                    // Using a mod operator to break screen up into regions
-                    if ball.previousYPostition <= ball.position.y + self.frame.height / 100 && ball.previousYPostition >= ball.position.y - self.frame.height / 100
-                    {
-                        ball.samePositionCount += 1
-
-                        // Too many times?  Add a little random shove to the ball
-                        if ball.samePositionCount > 3
-                        {
-                            ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 15...55)))
-                            ball.samePositionCount = 0
-                        }
-                    }
-                }
-            }
-            if let ball = secondBody.node as? GameBall
-            {
-                ball.previousYPostition = ball.position.y
-            }
+            isBallStuckSideways(ballHit: secondBody)
         }
     }
 }

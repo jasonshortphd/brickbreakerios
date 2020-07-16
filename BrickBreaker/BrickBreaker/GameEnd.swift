@@ -11,6 +11,7 @@ extension GameScene
             // Do we still have balls being released?  Or any active ones?
             if node.name == "ball" || ballsReleased < numBallsTotal
             {
+                //TODO:  What if it has been a LONG time?  Ball could be stuck.
                 roundOver = false
             }
         }
