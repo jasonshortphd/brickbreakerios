@@ -26,7 +26,7 @@ extension GameScene
                 if ballStartingLocation.position.x >= 0
                 {
                     ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
-                }else{
+                } else {
                     ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
                 }
                 

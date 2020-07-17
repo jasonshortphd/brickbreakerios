@@ -21,7 +21,6 @@ extension GameScene
         timeLeftSec = 59
         
         createInGameMenuTop()
-        createGameTimer()
         createBorder()
         createBricks()
         showBall()
@@ -36,6 +35,7 @@ extension GameScene
             ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)
         }
 
+        createGameTimer()
         startGameTimer()
         updateGameTimer()
     }

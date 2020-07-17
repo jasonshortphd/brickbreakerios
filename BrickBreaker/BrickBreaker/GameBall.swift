@@ -5,7 +5,7 @@ extension GameScene
 {
     class GameBall : SKShapeNode
     {
-        var previousYPostition = CGFloat(0)
+        var previousYPosition = CGFloat(0)
         var samePositionCount = 0
         //TODO:  Could we add hitpoints here too so that balls die?
     }

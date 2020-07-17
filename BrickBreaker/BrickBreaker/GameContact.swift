@@ -71,7 +71,7 @@ extension GameScene
         // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
         let ball = ballHit.node as! GameBall
         // Not EXACT same position, lumping into buckets of ranges in the game
-        if ball.previousYPostition <= ball.position.y + ballZoneHeight && ball.previousYPostition >= ball.position.y - ballZoneHeight
+        if ball.previousYPosition <= ball.position.y + ballZoneHeight && ball.previousYPosition >= ball.position.y - ballZoneHeight
         {
             ball.samePositionCount += 1
 
@@ -86,7 +86,7 @@ extension GameScene
         {
             // Reset if we are outside the zone
             ball.samePositionCount = 0
-            ball.previousYPostition = ball.position.y
+            //ball.previousYPosition = ball.position.y
         }
     }
     

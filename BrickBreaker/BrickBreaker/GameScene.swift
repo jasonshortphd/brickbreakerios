@@ -332,8 +332,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballLaunchPosition.strokeColor = ballColor
                         ballLaunchPosition.zPosition = 10
                         ballLaunchPosition.name = "startingBallLocation"
+
+                        // Launch all the balls from the starting location (stored previously)
                         ballLaunchPosition.position = ballStartingLocation.position
-                        // TODO: What if location isn't valid?
+                        // Track the origin of this turn
+                        ballOriginLocation = ballStartingLocation.position
                         
                         self.addChild(ballLaunchPosition)
                         
