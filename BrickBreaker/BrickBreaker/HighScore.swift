@@ -18,6 +18,5 @@ extension GameScene
     {
         UserDefaults.standard.set(highscore, forKey: "highscore")
         UserDefaults.standard.synchronize()
-        print("saved highscore")
     }
 }

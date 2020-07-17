@@ -66,10 +66,10 @@ extension GameScene
             ball.node?.run(moveAndRemove)
         }
     }
-    
+
+    // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
     func isBallStuckSideways( ballHit:SKPhysicsBody )
     {
-        // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
         if let ball = ballHit.node as? GameBall
         {
             let bandNum = Int(ball.position.y) % Int(ballZoneHeight)
