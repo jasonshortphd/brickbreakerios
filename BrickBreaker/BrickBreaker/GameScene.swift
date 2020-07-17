@@ -166,19 +166,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
     }
     
+    class GamePointer : SKShapeNode
+    {
+        static let multiplier = CGFloat(1.7)
+        
+        init(newPath:CGPath)
+        {
+            super.init()
+            self.path = newPath
+            self.lineWidth = CGFloat(7.0)
+            self.strokeColor = SKColor.white
+            self.fillColor = SKColor.blue
+            self.zPosition = 3
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            // NO IDEA why I need this for a class I am only going to be using
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+
+    
     func deletePointer()
     {
         for node in self.children
         {
-            if let nodeShape = node as? SKShapeNode
+            // We only want the game pointer
+            if let nodeShape = node as? GamePointer
             {
-                if nodeShape.name != nil
-                {
-                    if nodeShape.name == "directionPointer"
-                    {
-                        nodeShape.removeFromParent()
-                    }
-                }
+                nodeShape.removeFromParent()
             }
         }
     }
@@ -215,30 +231,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        //for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-        // where the pointer is created
-        // as the pointer has to be updated constantly it is created in touchesMoved
-        // first -> if there is an old pointer it is deleted
+
+        // Remove old pointer
         deletePointer()
     
         for touch in touches
         {
-            // then we are setting up the new pointer
             let location = touch.location(in: self)
-            if location.y < borderBottom.position.y{
-            let line_path:CGMutablePath = CGMutablePath()
-            line_path.move(to: ballStartingLocation.position)
-            // we get tthe point where the line has to move to, by taking the opposite of imaginary line between the original ball and the location of the touch
-            // if you want to change the length of the pointer, you would have to change the two '1.5'
-            line_path.addLine(to: CGPoint(x:ballStartingLocation.position.x - 1.7*(location.x - ballStartingLocation.position.x), y: ballStartingLocation.position.y - 1.7*(location.y - ballStartingLocation.position.y)))
-            let shape = SKShapeNode()
-            shape.name = "directionPointer"
-            shape.path = line_path
-            shape.lineWidth = 5.0
-            shape.strokeColor = SKColor.white
-            shape.fillColor = SKColor.blue
-            shape.zPosition = 3
-            self.addChild(shape)
+            
+            // This forces us to drag DOWN from the bottom border...
+            if location.y < borderBottom.position.y
+            {
+                let pointer_path:CGMutablePath = CGMutablePath()
+                pointer_path.move(to: ballStartingLocation.position)
+                pointer_path.addLine(to: CGPoint(x:ballStartingLocation.position.x - GamePointer.multiplier * (location.x - ballStartingLocation.position.x), y: ballStartingLocation.position.y - GamePointer.multiplier * (location.y - ballStartingLocation.position.y)))
+                
+                let newPointer = GamePointer(newPath: pointer_path)
+
+                
+                self.addChild(newPointer)
             }
         }
 
