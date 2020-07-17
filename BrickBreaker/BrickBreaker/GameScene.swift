@@ -119,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         yBrickRowStart = self.frame.height / 2 - self.frame.height / 5 +  self.frame.width / 7
         yBrickStart = self.frame.height / 2 - self.frame.height / 5 + self.frame.width / 14
         
-        ballZoneHeight = self.frame.height / 100
+        ballZoneHeight = ceil( self.frame.height / 25.0)
        
         // Range of colors
         colorsPrimary = [

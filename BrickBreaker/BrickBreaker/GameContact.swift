@@ -72,15 +72,13 @@ extension GameScene
     {
         if let ball = ballHit.node as? GameBall
         {
-            let bandNum = Int(ball.position.y) % Int(ballZoneHeight)
+            let bandNum = Int(abs( ball.position.y/ballZoneHeight) )
 
             if ball.previousBand == bandNum
             {
                 // We are still in the same bracket...
                 ball.samePositionCount += 1
                 
-                //print("Band: \(bandNum) Previous Band: \(ball.previousBand) SamePositionCount: \(ball.samePositionCount)")
-
                 if ball.samePositionCount >= 3
                 {
                     // Shove the ball out of alignment a random amount
