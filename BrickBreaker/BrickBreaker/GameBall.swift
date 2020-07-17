@@ -41,7 +41,7 @@ extension GameScene
             let ball = GameBall(circleOfRadius: ballSize)
             ball.fillColor = ballColor
             ball.strokeColor = ballColor
-            ball.position = ballStartingLocation.position
+            ball.position = ballLaunchPosition.position
             ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.height / 2)
             ball.physicsBody?.categoryBitMask = PhysicsCategory.Ball
             ball.physicsBody?.contactTestBitMask = PhysicsCategory.Brick | PhysicsCategory.Border
@@ -54,7 +54,7 @@ extension GameScene
             ball.physicsBody?.linearDamping = 0.0
             ball.name = "ball"
             ball.zPosition = 3
-            ball.physicsBody?.mass = 0.0564
+            ball.physicsBody?.mass = 0.056
 
             self.addChild(ball)
 

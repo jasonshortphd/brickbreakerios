@@ -34,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
     var ballsRemainingLabel = SKLabelNode()     // Countdown on screen as we release balls
 
     var ballOriginLocation = CGPoint()          // Balls starting point
-    var ballLaunchPosition = SKShapeNode()      // Ball stays in background at origin location
+    var ballLaunchPosition = SKShapeNode()      // Ball stays in background at starting location
     var ballStartingLocation = SKShapeNode()    // Where did the balls start (show when balls not launching)
     var ballTargetLocation = CGPoint()          // Target where balls fly towards
 
@@ -63,12 +63,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate
 
     // Menu on running screen
     var menuRect = SKShapeNode()
-    //var pauseButton = PlaybackButton()
     var scoreLabel = SKLabelNode()
     var highscoreLabel = SKLabelNode()
     var highestLabel = SKLabelNode()
 
-    
     var roundOver = Bool()              // Is this round done?
     var gameOver = Bool()
     var touchIsEnabled = Bool()         // Touch off while balls being released
@@ -298,9 +296,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                     if !ballStartingLocation.contains(location)
                     {
                         ballsReleased = 0
-                        ballsRemainingLabel.removeFromParent()
-                        ballStartingLocation.removeFromParent()
-                        ballLaunchPosition.removeFromParent()
+                        //ballLaunchPosition.removeFromParent()
 
                         ballTargetLocation = location
                         
@@ -308,12 +304,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         ballLaunchPosition.fillColor = ballColor
                         ballLaunchPosition.strokeColor = ballColor
                         ballLaunchPosition.zPosition = 10
+                        // We have to copy this now because the starting position will change when first ball returns!
+                        ballLaunchPosition.position = ballStartingLocation.position
                         ballLaunchPosition.name = "startingBallLocation"
 
                         // Launch all the balls from the starting location (stored previously)
-                        ballLaunchPosition.position = ballStartingLocation.position
+                        //ballLaunchPosition.position = ballStartingLocation.position
+                        
                         // Track the origin of this turn
                         ballOriginLocation = ballStartingLocation.position
+                        ballStartingLocation.removeFromParent()
+                        ballsRemainingLabel.removeFromParent()
                         
                         self.addChild(ballLaunchPosition)
                         

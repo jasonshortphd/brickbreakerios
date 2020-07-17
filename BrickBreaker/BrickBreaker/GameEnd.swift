@@ -25,9 +25,9 @@ extension GameScene
 
                 if ballStartingLocation.position.x >= 0
                 {
-                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
+                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x -  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)
                 } else {
-                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballStartingLocation.frame.height / 2)
+                    ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)
                 }
                 
                 // looking for new highscore, if new highscore -> saving it in core data

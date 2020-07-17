@@ -6,7 +6,7 @@ extension GameScene
     func createMainMenuBallDisplay()
     {
         showBall()
-        ballStartingLocation.position = CGPoint(x: ballBackGround.position.x, y: ballBackGround.position.x + ballBackGround.frame.height * 2)
+        ballStartingLocation.position = CGPoint(x: playBackGround.position.x, y: playBackGround.position.x + playBackGround.frame.height * 2)
         ballStartingLocation.physicsBody = SKPhysicsBody(circleOfRadius: ballStartingLocation.frame.width / 2)
         ballStartingLocation.physicsBody?.affectedByGravity = true
         ballStartingLocation.physicsBody?.categoryBitMask = PhysicsCategory.Ball
@@ -16,7 +16,7 @@ extension GameScene
         ballStartingLocation.physicsBody?.restitution = 1.0
         ballStartingLocation.physicsBody?.angularDamping = 0.0
         ballStartingLocation.physicsBody?.linearDamping = 0.1
-        ballStartingLocation.physicsBody?.mass = 0.0564
+        ballStartingLocation.physicsBody?.mass = 0.056
     }
     
     func MainGameSceneMenu()
