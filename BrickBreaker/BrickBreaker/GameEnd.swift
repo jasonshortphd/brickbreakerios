@@ -51,10 +51,11 @@ extension GameScene
         {
             for node in self.children
             {
-                if let box = node as? Brick
+                // We only care about Brick objects
+                if let brick = node as? Brick
                 {
-                    // a box actually touches the bottom when its property hasmoveddown equals to 9
-                    if box.rowsMoved >= 9
+                    // 9 means they have hit bottom
+                    if brick.rowsMoved >= 9
                     {
                         //pauseButton.isHidden = true
                         gameOver = true

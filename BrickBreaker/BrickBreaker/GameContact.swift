@@ -41,11 +41,12 @@ extension GameScene
         // First ball to hit bottom stays until next round
         if hasFirstBallReturned
         {
+            ballStartingLocation.removeFromParent()
             // This is now the NEXT starting location (while we still have balls in flight we can't change origin!)
             ballStartingLocation.position = (ball.node?.position)!
             // Make sure the Y lines up with the border (someties due to velocity it didn't quite line up
             ballStartingLocation.position.y = borderBottom.position.y + ballStartingLocation.frame.height / 2 + 5
-
+            self.addChild(ballStartingLocation)
             // Remove the ball
             ball.node?.removeFromParent()
             hasFirstBallReturned = false

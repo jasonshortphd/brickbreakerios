@@ -212,7 +212,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                 pointer_path.addLine(to: CGPoint(x:ballStartingLocation.position.x - GamePointer.multiplier * (location.x - ballStartingLocation.position.x), y: ballStartingLocation.position.y - GamePointer.multiplier * (location.y - ballStartingLocation.position.y)))
                 
                 let newPointer = GamePointer(newPath: pointer_path)
-
                 
                 self.addChild(newPointer)
             }
@@ -307,11 +306,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate
                         // We have to copy this now because the starting position will change when first ball returns!
                         ballLaunchPosition.position = ballStartingLocation.position
                         ballLaunchPosition.name = "startingBallLocation"
-
-                        // Launch all the balls from the starting location (stored previously)
-                        //ballLaunchPosition.position = ballStartingLocation.position
                         
-                        // Track the origin of this turn
+                        // Track the origin of this turn (must be done before removing, or you get 0!)
                         ballOriginLocation = ballStartingLocation.position
                         ballStartingLocation.removeFromParent()
                         ballsRemainingLabel.removeFromParent()
