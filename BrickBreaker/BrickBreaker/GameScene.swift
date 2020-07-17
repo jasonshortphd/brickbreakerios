@@ -166,39 +166,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         
     }
     
-    class GamePointer : SKShapeNode
-    {
-        static let multiplier = CGFloat(1.7)
-        
-        init(newPath:CGPath)
-        {
-            super.init()
-            self.path = newPath
-            self.lineWidth = CGFloat(7.0)
-            self.strokeColor = SKColor.white
-            self.fillColor = SKColor.blue
-            self.zPosition = 3
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            // NO IDEA why I need this for a class I am only going to be using
-            fatalError("init(coder:) has not been implemented")
-        }
-    }
-
-    
-    func deletePointer()
-    {
-        for node in self.children
-        {
-            // We only want the game pointer
-            if let nodeShape = node as? GamePointer
-            {
-                nodeShape.removeFromParent()
-            }
-        }
-    }
-        
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         //for t in touches { self.touchDown(atPoint: t.location(in: self)) }
@@ -254,8 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate
         }
 
     }
-    
-    
+   
     // Depending on the game state, we have some work to do
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
