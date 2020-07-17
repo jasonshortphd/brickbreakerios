@@ -70,24 +70,33 @@ extension GameScene
     func isBallStuckSideways( ballHit:SKPhysicsBody )
     {
         // algorithm to detect if a ball is flying horizontally -> prevention from a never ending game
-        let ball = ballHit.node as! GameBall
-        // Not EXACT same position, lumping into buckets of ranges in the game
-        if ball.previousYPosition <= ball.position.y + ballZoneHeight && ball.previousYPosition >= ball.position.y - ballZoneHeight
+        if let ball = ballHit.node as? GameBall
         {
-            ball.samePositionCount += 1
+            let bandNum = Int(ball.position.y) % Int(ballZoneHeight)
 
-            if ball.samePositionCount > 3
+            if ball.previousBand == bandNum
             {
-                // Shove the ball out of alignment a random amount
-                ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 15...55)))
-                ball.samePositionCount = 0
+                // We are still in the same bracket...
+                ball.samePositionCount += 1
+                
+                //print("Band: \(bandNum) Previous Band: \(ball.previousBand) SamePositionCount: \(ball.samePositionCount)")
+
+                if ball.samePositionCount >= 3
+                {
+                    // Shove the ball out of alignment a random amount
+                    ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Int.random(in: 35...90)))
+                    ball.samePositionCount = 0
+                    
+                    #if DEBUG
+                    print("Band: \(bandNum) Previous Band: \(ball.previousBand) SamePositionCount: \(ball.samePositionCount)")
+                    print("GIVING BALL A SHOVE")
+                    #endif
+                }
             }
-        }
-        else
-        {
-            // Reset if we are outside the zone
-            ball.samePositionCount = 0
-            //ball.previousYPosition = ball.position.y
+            else
+            {
+                ball.previousBand = bandNum
+            }
         }
     }
     

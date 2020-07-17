@@ -5,7 +5,8 @@ extension GameScene
 {
     class GameBall : SKShapeNode
     {
-        var previousYPosition = CGFloat(0)
+        // We lump the screen into buckets the size of the bricks.  Ball hitting same zone we give it a little shove
+        var previousBand = Int(0)
         var samePositionCount = 0
         //TODO:  Could we add hitpoints here too so that balls die?
     }
