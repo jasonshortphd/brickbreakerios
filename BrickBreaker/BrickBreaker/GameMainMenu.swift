@@ -27,17 +27,17 @@ extension GameScene
         
         playBackGround = SKShapeNode(rectOf: CGSize(width: self.frame.width / 3, height: self.frame.height / 10))
         playBackGround.position = CGPoint(x: self.frame.width / 5, y: -1.5 * playBackGround.frame.height)
-        playBackGround.strokeColor = SKColor(red: 212/255, green: 49/255, blue: 127/255, alpha: 1.0)
+        playBackGround.strokeColor = colorsSecondary[8]!
         playBackGround.lineWidth = 10
-        playBackGround.fillColor = SKColor(red: 72/255, green: 13/255, blue: 67/255, alpha: 1.0)
+        playBackGround.fillColor = colorsSecondary[7]!
         playBackGround.zPosition = 1
         self.addChild(playBackGround)
         
         ballBackGround = SKShapeNode(rectOf: CGSize(width: self.frame.width / 3, height: self.frame.height / 10))
         ballBackGround.position = CGPoint(x: -self.frame.width / 5, y: -1.5 * ballBackGround.frame.height)
-        ballBackGround.strokeColor = SKColor(red: 212/255, green: 49/255, blue: 127/255, alpha: 1.0)
+        ballBackGround.strokeColor = colorsSecondary[8]!
         ballBackGround.lineWidth = 10
-        ballBackGround.fillColor = SKColor(red: 72/255, green: 13/255, blue: 67/255, alpha: 1.0)
+        ballBackGround.fillColor = colorsSecondary[7]!
         ballBackGround.zPosition = 1
         self.addChild(ballBackGround)
         
@@ -52,19 +52,20 @@ extension GameScene
         playButtonShape.name = "playButton"
         playButtonShape.path = playButtonPath
         playButtonShape.lineWidth = 10
-        playButtonShape.strokeColor = SKColor(red: 227/255, green: 160/255, blue: 158/255, alpha: 1.0)
+        playButtonShape.strokeColor =  .white
+        playButtonShape.fillColor = .white
         playButtonShape.zPosition = 2
         self.addChild(playButtonShape)
         
         gameNameLabel = SKLabelNode(text: "Brick Blaster")
         gameNameLabel.fontSize = self.frame.height / 12
         gameNameLabel.fontName = "Damascus"
-        gameNameLabel.fontColor = SKColor(red: 221/255, green: 232/255, blue: 130/255, alpha: 1.0)
+        gameNameLabel.fontColor = colorsSecondary[2]
         gameNameLabel.zPosition = 1
         self.addChild(gameNameLabel)
         
         upperLine = SKShapeNode(rectOf: CGSize(width: gameNameLabel.frame.width, height: self.frame.width / 60))
-        upperLine.strokeColor = SKColor(red: 221/255, green: 232/255, blue: 130/255, alpha: 1.0)
+        upperLine.strokeColor = colorsSecondary[1]!
         upperLine.fillColor = upperLine.strokeColor
         upperLine.position = CGPoint(x: 0, y: 1.2 * gameNameLabel.frame.height)
         upperLine.zPosition = 1
@@ -78,7 +79,7 @@ extension GameScene
         self.addChild(bottomLine)
         
         circleShape = SKShapeNode(circleOfRadius: lineSize / 4)
-        circleShape.strokeColor = SKColor(red: 227/255, green: 160/255, blue: 158/255, alpha: 1.0)
+        circleShape.strokeColor = .white
         circleShape.fillColor = circleShape.strokeColor
         circleShape.position = ballBackGround.position
         circleShape.zPosition = 2
@@ -89,6 +90,7 @@ extension GameScene
         timeLabel.fontSize = self.frame.width / 8
         timeLabel.fontName = "Damascus"
         timeLabel.text = "GET READY"
+        timeLabel.fontColor = colorsSecondary[7]!
 
         createBorder()
 
