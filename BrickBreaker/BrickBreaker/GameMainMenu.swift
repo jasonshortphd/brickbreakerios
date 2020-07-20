@@ -60,12 +60,12 @@ extension GameScene
         gameNameLabel = SKLabelNode(text: "Brick Blaster")
         gameNameLabel.fontSize = self.frame.height / 12
         gameNameLabel.fontName = "Damascus"
-        gameNameLabel.fontColor = colorsSecondary[2]
+        gameNameLabel.fontColor = colorsSecondary[9]
         gameNameLabel.zPosition = 1
         self.addChild(gameNameLabel)
         
         upperLine = SKShapeNode(rectOf: CGSize(width: gameNameLabel.frame.width, height: self.frame.width / 60))
-        upperLine.strokeColor = colorsSecondary[1]!
+        upperLine.strokeColor = colorsSecondary[10]!
         upperLine.fillColor = upperLine.strokeColor
         upperLine.position = CGPoint(x: 0, y: 1.2 * gameNameLabel.frame.height)
         upperLine.zPosition = 1
