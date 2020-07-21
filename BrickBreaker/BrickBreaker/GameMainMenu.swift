@@ -57,7 +57,7 @@ extension GameScene
         playButtonShape.zPosition = 2
         self.addChild(playButtonShape)
         
-        gameNameLabel = SKLabelNode(text: "Brick Blaster")
+        gameNameLabel = SKLabelNode(text: "Ball Meets Brick")
         gameNameLabel.fontSize = self.frame.height / 12
         gameNameLabel.fontName = "Damascus"
         gameNameLabel.fontColor = colorsSecondary[9]
@@ -72,7 +72,7 @@ extension GameScene
         self.addChild(upperLine)
         
         bottomLine = SKShapeNode(rectOf: CGSize(width: gameNameLabel.frame.width, height: self.frame.width / 60))
-        bottomLine.strokeColor = SKColor(red: 221/255, green: 232/255, blue: 130/255, alpha: 1.0)
+        bottomLine.strokeColor = colorsSecondary[10]!
         bottomLine.fillColor = upperLine.strokeColor
         bottomLine.position = CGPoint(x: 0, y: -0.2 * gameNameLabel.frame.height)
         bottomLine.zPosition = 1
