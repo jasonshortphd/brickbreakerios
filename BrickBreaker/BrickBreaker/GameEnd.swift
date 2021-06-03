@@ -30,7 +30,7 @@ extension GameScene
                     ballsRemainingLabel.position = CGPoint(x: ballStartingLocation.position.x +  ballStartingLocation.frame.width, y: ballStartingLocation.position.y - ballsRemainingLabel.frame.height / 2)
                 }
                 
-                // looking for new highscore, if new highscore -> saving it in core data
+                // looking for new highscore, if new highscore -> save it in core data
                 if levelNumber > highscore
                 {
                     highscore = levelNumber
