@@ -66,7 +66,7 @@ extension GameScene
     func createGameTimer()
     {
         timeRect = SKShapeNode(rectOf: CGSize(width: self.frame.width , height: (self.frame.height / 2 - yBrickStart) / 2))
-        timeRect.strokeColor = colorsSecondary[15]!  // getting the cyan color
+        timeRect.strokeColor = colorsSecondary[15]!
         timeRect.lineWidth = 10
         timeRect.position = CGPoint(x: 0 , y: -self.frame.height / 2 + timeRect.frame.height / 2)
         timeRect.zPosition = 3

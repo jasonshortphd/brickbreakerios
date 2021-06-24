@@ -29,7 +29,7 @@ extension GameScene
         self.addChild(menuRect)
         
         quitButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2, height: self.frame.height / 6))
-        quitButton.position = CGPoint(x: -quitButton.frame.width / 2, y: 0)
+        quitButton.position = CGPoint(x: -quitButton.frame.width / 4, y: 0)
         quitButton.strokeColor = SKColor(red: 100/255, green: 0, blue: 0, alpha: 1.0)
         quitButton.lineWidth = 10
         quitButton.fillColor = colorsSecondary[4]!
